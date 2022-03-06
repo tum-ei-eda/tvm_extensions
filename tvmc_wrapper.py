@@ -9,6 +9,7 @@ from disable_legalize import OptionallyDisableLegalize
 def drive_tumeda_compile(args):
     with OptionallyDisableLegalize(args.disable_legalize):
         drive_compile(args)
+    return 0
 
 
 @register_parser
