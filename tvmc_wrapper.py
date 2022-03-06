@@ -24,7 +24,8 @@ def add_tumeda_compile_parser(subparsers, parser):
 
 
 def main():
-    sys.exit(_main(sys.argv[1:]))
+    args = [arg.replace("compile", "tumeda_compile") for arg in sys.argv[1:]]
+    sys.exit(_main(args))
 
 
 if __name__ == "__main__":
