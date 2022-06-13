@@ -1,35 +1,35 @@
 diff --git a/python/tvm/driver/tvmc/compiler.py b/python/tvm/driver/tvmc/compiler.py
-index d260c98b6..cb8fad452 100644
+index 138504470..29f3153e9 100644
 --- a/python/tvm/driver/tvmc/compiler.py
 +++ b/python/tvm/driver/tvmc/compiler.py
-@@ -41,13 +41,7 @@ from .shape_parser import parse_shape_string
- # pylint: disable=invalid-name
+@@ -42,12 +42,8 @@ from .shape_parser import parse_shape_string
  logger = logging.getLogger("TVMC")
-
--
+ 
+ 
 -@register_parser
--def add_compile_parser(subparsers, _):
+-def add_compile_parser(subparsers, _, json_params):
 -    """Include parser for 'compile' subcommand"""
 -
 -    parser = subparsers.add_parser("compile", help="compile a model.")
 -    parser.set_defaults(func=drive_compile)
-+def add_compile_arguments(parser):
++def add_compile_arguments(parser, json_params):
++    """Generate arguments for compile parser"""
      parser.add_argument(
          "--cross-compiler",
          default="",
-@@ -138,6 +132,15 @@ def add_compile_parser(subparsers, _):
-     )
-
-
+@@ -147,6 +143,15 @@ def add_compile_parser(subparsers, _, json_params):
+         parser.set_defaults(**one_entry)
+ 
+ 
 +@register_parser
-+def add_compile_parser(subparsers, _):
++def add_compile_parser(subparsers, _, json_params):
 +    """Include parser for 'compile' subcommand"""
 +
 +    parser = subparsers.add_parser("compile", help="compile a model.")
 +    parser.set_defaults(func=drive_compile)
-+    add_compile_arguments(parser)
++    add_compile_arguments(parser, json_params)
 +
 +
  def drive_compile(args):
      """Invoke tvmc.compiler module with command line arguments
-
+ 

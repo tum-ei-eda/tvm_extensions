@@ -13,7 +13,7 @@ def drive_tumeda_compile(args):
 
 
 @register_parser
-def add_tumeda_compile_parser(subparsers, parser):
+def add_tumeda_compile_parser(subparsers, parser, json_params):
     """Include parser for 'tumeda_compile' subcommand"""
     parser = subparsers.add_parser("tumeda_compile", help="compile a model with tumeda extensions.")
     parser.set_defaults(func=drive_tumeda_compile)
@@ -21,7 +21,7 @@ def add_tumeda_compile_parser(subparsers, parser):
     group.add_argument(
         "--disable-legalize", action="store_true", help="apply a custom transformation to disable legalization passes."
     )
-    add_compile_arguments(parser)
+    add_compile_arguments(parser, json_params)
 
 
 def main():
