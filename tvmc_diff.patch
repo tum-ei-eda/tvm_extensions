@@ -1,8 +1,8 @@
 diff --git a/python/tvm/driver/tvmc/compiler.py b/python/tvm/driver/tvmc/compiler.py
-index 138504470..29f3153e9 100644
+index 98cc5ff7d..675aa21b4 100644
 --- a/python/tvm/driver/tvmc/compiler.py
 +++ b/python/tvm/driver/tvmc/compiler.py
-@@ -42,12 +42,8 @@ from .shape_parser import parse_shape_string
+@@ -45,12 +45,8 @@ from .workspace_pools import generate_workspace_pools_args, workspace_pools_reco
  logger = logging.getLogger("TVMC")
  
  
@@ -17,9 +17,9 @@ index 138504470..29f3153e9 100644
      parser.add_argument(
          "--cross-compiler",
          default="",
-@@ -147,6 +143,15 @@ def add_compile_parser(subparsers, _, json_params):
-         parser.set_defaults(**one_entry)
+@@ -150,6 +146,15 @@ def add_compile_parser(subparsers, _, json_params):
  
+     generate_workspace_pools_args(parser)
  
 +@register_parser
 +def add_compile_parser(subparsers, _, json_params):
@@ -30,6 +30,6 @@ index 138504470..29f3153e9 100644
 +    add_compile_arguments(parser, json_params)
 +
 +
+ 
  def drive_compile(args):
      """Invoke tvmc.compiler module with command line arguments
- 
